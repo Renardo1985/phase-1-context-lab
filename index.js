@@ -74,10 +74,17 @@ function findEmployeeByFirstName(eObj,firstNameString)
     })
 }
 
-function calculatePayroll(emArray){  
-   let sum = 0;
-    for (let i = 0; i < emArray.length; i++){
-        sum += allWagesFor.call(emArray[i])
-    }
-    return sum;
+// function calculatePayroll(emArray){  
+//    let sum = 0;
+//     for (let i = 0; i < emArray.length; i++){
+//         sum += allWagesFor.call(emArray[i])
+//     }
+//     return sum;
+// }
+
+function calculatePayroll(employees){
+    let payroll=employees.reduce(function(memo,employee){
+        return memo+allWagesFor.call(employee)
+    },0)
+    return payroll;
 }
